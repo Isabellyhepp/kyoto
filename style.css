@@ -1,142 +1,17 @@
-/* Importando fontes japonesas elegantes do Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;700&family=Zen+Kurenaido&family=Shippori+Mincho&display=swap');
-
-:root {
-    --papel: #f4e1c1; /* Cor de pergaminho antigo */
-    --tinta: #2d2d2d; /* Preto nanquim */
-    --sangue: #8b0000; /* Vermelho escuro para os mistérios */
-    --sakura: #ffb7c5; /* Rosa cerejeira */
-    --ouro: #d4af37; /* Destaques de templos */
+function createSakura() {
+    const container = document.getElementById('sakura-container');
+    const petal = document.createElement('span');
+    const size = Math.random() * 10 + 10 + 'px';
+    const lateralPos = Math.random() * 100 + 'vw';
+    const duration = Math.random() * 5 + 5 + 's';
+    
+    petal.classList.add('sakura');
+    petal.style.width = size;
+    petal.style.height = size;
+    petal.style.left = lateralPos;
+    petal.style.animationDuration = duration;
+    
+    container.appendChild(petal);
+    setTimeout(() => { petal.remove(); }, 10000);
 }
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #1a1a1a; /* Fundo escuro para destacar o pergaminho */
-    font-family: 'Shippori Mincho', serif;
-    color: var(--tinta);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* O PERGAMINHO */
-.scroll-wrap {
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: var(--papel);
-    background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png"); /* Textura de papel real */
-    box-shadow: 0 0 100px rgba(0,0,0,0.5);
-    padding: 60px 80px;
-    border-left: 15px solid #3d2b1f; /* Madeira do rolo do pergaminho */
-    border-right: 15px solid #3d2b1f;
-    position: relative;
-}
-
-/* CABEÇALHO ANIMADO */
-header {
-    text-align: center;
-    padding: 100px 0;
-    border-bottom: 2px solid var(--tinta);
-    margin-bottom: 50px;
-}
-
-header h1 {
-    font-family: 'Zen Kurenaido', sans-serif;
-    font-size: 4rem;
-    color: var(--tinta);
-    letter-spacing: 8px;
-    margin-bottom: 20px;
-}
-
-header p {
-    font-style: italic;
-    color: var(--sangue);
-    font-weight: bold;
-}
-
-/* SEÇÕES DO PERGAMINHO */
-section {
-    margin-bottom: 120px;
-    position: relative;
-    opacity: 0.9;
-}
-
-h2 {
-    font-family: 'Zen Kurenaido', sans-serif;
-    font-size: 2.5rem;
-    color: var(--sangue);
-    border-bottom: 1px solid var(--ouro);
-    display: inline-block;
-    margin-bottom: 30px;
-}
-
-p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    text-align: justify;
-}
-
-ul {
-    list-style: none;
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 15px;
-    padding-left: 25px;
-    position: relative;
-    font-weight: bold;
-}
-
-li::before {
-    content: "⛩"; /* Ícone de portal japonês antes das listas */
-    position: absolute;
-    left: 0;
-    color: var(--sangue);
-}
-
-/* DESTAQUES */
-strong {
-    color: var(--sangue);
-    border-bottom: 1px dashed var(--sangue);
-}
-
-/* ANIMAÇÃO DE PÉTALAS DE CEREJEIRA (SAKURA) */
-.sakura-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 999;
-}
-
-/* RODAPÉ */
-footer {
-    text-align: center;
-    padding: 50px;
-    border-top: 1px solid var(--tinta);
-    font-family: 'Zen Kurenaido', sans-serif;
-    color: #777;
-}
-
-/* Efeito de Scroll Suave */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Responsividade para celular */
-@media (max-width: 600px) {
-    .scroll-wrap {
-        padding: 30px 20px;
-        border: none;
-    }
-    header h1 {
-        font-size: 2.5rem;
-    }
-}
+setInterval(createSakura, 300);
