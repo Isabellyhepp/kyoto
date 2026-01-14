@@ -1,62 +1,39 @@
-function createSakura() {
-    const container = document.getElementById('sakura-container');
-    const petal = document.createElement('span');
-    
-    // Configurações aleatórias para cada pétala
-    const size = Math.random() * 10 + 10 + 'px'; // Tamanho entre 10px e 20px
-    const lateralPos = Math.random() * 100 + 'vw'; // Posição horizontal aleatória
-    const duration = Math.random() * 5 + 5 + 's'; // Tempo de queda entre 5s e 10s
-    const delay = Math.random() * 5 + 's'; // Atraso para começar
-    
-    petal.classList.add('sakura');
-    petal.style.width = size;
-    petal.style.height = size;
-    petal.style.left = lateralPos;
-    petal.style.animationDuration = duration;
-    petal.style.animationDelay = delay;
-    
-    // Adiciona ao container
-    container.appendChild(petal);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;700&family=Zen+Kurenaido&family=Shippori+Mincho&display=swap');
 
-    // Remove a pétala depois que a animação terminar para não pesar o site
-    setTimeout(() => {
-        petal.remove();
-    }, 10000);
+:root {
+    --papel: #f4e1c1;
+    --tinta: #2d2d2d;
+    --sangue: #8b0000;
+    --sakura: #ffb7c5;
 }
 
-// Cria uma nova pétala a cada 300 milissegundos
-setInterval(createSakura, 300);
-/* Container das pétalas */
-#sakura-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Deixa clicar nos links por baixo das pétalas */
-    z-index: 9999;
-    overflow: hidden;
+body {
+    background-color: #1a1a1a;
+    font-family: 'Shippori Mincho', serif;
+    color: var(--tinta);
+    overflow-x: hidden;
 }
 
-/* Estilo da pétala */
-.sakura {
-    position: absolute;
-    top: -10%;
-    background-color: #ffb7c5;
-    border-radius: 100% 0 100% 0; /* Formato de pétala */
-    opacity: 0.7;
-    box-shadow: 0 0 5px rgba(255, 183, 197, 0.5);
-    animation: fall linear forwards;
+.scroll-wrap {
+    max-width: 850px;
+    margin: 50px auto;
+    background-color: var(--papel);
+    background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
+    box-shadow: 0 0 100px rgba(0,0,0,0.8);
+    padding: 60px;
+    border-left: 15px solid #3d2b1f;
+    border-right: 15px solid #3d2b1f;
 }
 
-/* Animação de queda e rotação */
+header { text-align: center; padding: 60px 0; border-bottom: 2px solid var(--tinta); }
+h1 { font-family: 'Zen Kurenaido', sans-serif; font-size: 3.5rem; letter-spacing: 5px; }
+section { margin: 80px 0; }
+h2 { font-family: 'Zen Kurenaido', sans-serif; color: var(--sangue); border-bottom: 1px solid #d4af37; margin-bottom: 20px; }
+p { font-size: 1.2rem; line-height: 1.8; text-align: justify; }
+
+#sakura-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+.sakura { position: absolute; top: -10%; background-color: var(--sakura); border-radius: 100% 0 100% 0; opacity: 0.7; animation: fall linear forwards; }
 @keyframes fall {
-    0% {
-        top: -10%;
-        transform: translateX(0) rotate(0deg);
-    }
-    100% {
-        top: 110%;
-        transform: translateX(100px) rotate(360deg);
-    }
+    0% { top: -10%; transform: rotate(0deg); }
+    100% { top: 110%; transform: rotate(360deg) translateX(50px); }
 }
