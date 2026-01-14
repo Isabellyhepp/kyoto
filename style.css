@@ -1,17 +1,1 @@
-function createSakura() {
-    const container = document.getElementById('sakura-container');
-    const petal = document.createElement('span');
-    const size = Math.random() * 10 + 10 + 'px';
-    const lateralPos = Math.random() * 100 + 'vw';
-    const duration = Math.random() * 5 + 5 + 's';
-    
-    petal.classList.add('sakura');
-    petal.style.width = size;
-    petal.style.height = size;
-    petal.style.left = lateralPos;
-    petal.style.animationDuration = duration;
-    
-    container.appendChild(petal);
-    setTimeout(() => { petal.remove(); }, 10000);
-}
-setInterval(createSakura, 300);
+
