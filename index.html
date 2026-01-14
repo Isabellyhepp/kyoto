@@ -1,61 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site Quioto</title>
-    
+    <title>Kyoto: Luz e Sombra</title>
     <style>
-        /* O CSS FICA AQUI DENTRO */
+        /* TUDO EM UM LUGAR SÓ PARA NÃO DAR ERRO */
+        @import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&family=Shippori+Mincho&display=swap');
+
         body {
-            background-color: #0f172a;
-            color: white;
-            font-family: sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            background-color: #1a1a1a;
             margin: 0;
+            font-family: 'Shippori Mincho', serif;
+            overflow-x: hidden;
         }
-        .card {
-            background: #1e293b;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            border: 1px solid #38bdf8;
+
+        /* O PERGAMINHO */
+        .pergaminho {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #f4e1c1; /* Cor de papel antigo */
+            background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
+            padding: 50px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.7);
+            border-left: 12px solid #3d2b1f;
+            border-right: 12px solid #3d2b1f;
+            min-height: 100vh;
         }
-        button {
-            background-color: #38bdf8;
-            color: #0f172a;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-        button:hover {
-            background-color: #7dd3fc;
+
+        header { text-align: center; border-bottom: 2px solid #2d2d2d; padding-bottom: 30px; }
+        h1 { font-family: 'Zen Kurenaido', sans-serif; font-size: 3rem; margin: 0; color: #2d2d2d; }
+        h2 { color: #8b0000; font-family: 'Zen Kurenaido', sans-serif; border-bottom: 1px solid #d4af37; margin-top: 50px; }
+        p { font-size: 1.2rem; line-height: 1.7; color: #2d2d2d; text-align: justify; }
+
+        /* PÉTALAS (SAKURA) */
+        #sakura-box { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+        .petala { position: absolute; background: #ffb7c5; border-radius: 100% 0 100% 0; opacity: 0.7; animation: cair linear forwards; }
+        
+        @keyframes cair {
+            0% { top: -10%; transform: rotate(0deg); }
+            100% { top: 110%; transform: rotate(360deg) translateX(50px); }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1 id="texto">Projeto Quioto</h1>
-        <p>Meu site oficial no GitHub Pages.</p>
-        <button onclick="mudarTexto()">Clique aqui</button>
+    <div id="sakura-box"></div>
+
+    <div class="pergaminho">
+        <header>
+            <h1>KYOTO: LUZ E SOMBRA</h1>
+            <p><strong>Segredos que os guias não contam.</strong></p>
+        </header>
+
+        <section>
+            <h2>01. O Teto de Sangue</h2>
+            <p>No templo Genko-an, olhe para o teto. Aquelas manchas escuras são sangue real de 380 samurais que cometeram suicídio ritual em 1600. Para honrar suas mortes, o assoalho do castelo foi colocado no teto do templo.</p>
+        </section>
+
+        <section>
+            <h2>02. Alarme Anti-Ninja</h2>
+            <p>O Castelo de Nijo tem o "Piso Rouxinol". Ele chia alto quando alguém pisa. Foi feito assim para que nenhum assassino ninja conseguisse chegar perto do Shogun enquanto ele dormia.</p>
+        </section>
+
+        <section>
+            <h2>03. Nintendo & Yakuza</h2>
+            <p>A Nintendo nasceu em Kyoto fazendo cartas de baralho. Seus maiores clientes eram os cassinos da máfia japonesa (Yakuza). O império do Mario começou com o dinheiro do jogo clandestino.</p>
+        </section>
+
+        <section>
+            <h2>04. A "Falsa" Educação</h2>
+            <p>Em Kyoto, se alguém elogiar seu relógio dizendo que é bonito, ela pode estar querendo dizer: "você olha tanto para o relógio que parece que quer ir embora, então saia logo".</p>
+        </section>
+
+        <section>
+            <h2>05. O Brasil em Kyoto</h2>
+            <p>Os brasileiros em Kyoto são discretos. Eles estão nas academias de Jiu-Jitsu e nas cafeterias chiques que usam o melhor café de Minas Gerais para servir monges e artistas.</p>
+        </section>
+
+        <footer style="margin-top: 50px; text-align: center; font-size: 0.9rem; opacity: 0.6;">
+            Kyoto Quest 2026 - O Japão Real.
+        </footer>
     </div>
 
     <script>
-        // O JAVASCRIPT FICA AQUI DENTRO
-        function mudarTexto() {
-            document.getElementById('texto').innerText = "Funcionou perfeitamente!";
-            document.getElementById('texto').style.color = "#38bdf8";
+        // AS PÉTALAS FUNCIONANDO AQUI DENTRO
+        function soltarPetala() {
+            const box = document.getElementById('sakura-box');
+            const p = document.createElement('div');
+            p.className = 'petala';
+            
+            p.style.width = Math.random() * 10 + 10 + 'px';
+            p.style.height = p.style.width;
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = Math.random() * 3 + 4 + 's';
+            
+            box.appendChild(p);
+            setTimeout(() => { p.remove(); }, 6000);
         }
+        setInterval(soltarPetala, 400);
     </script>
-
 </body>
 </html>
